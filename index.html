@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+    <div class="w-full h-screen bg-neutral-600 px-10 py-10" id="countdown-container">
+        <div id="countdown" class="countdown-timer border-2 border-white-600 text-white text-9xl "></div>
+        <div class="countdown-label text-white border-2 border-white-600 text-9xl">UNTIL 2025</div>
+    </div>
+
+
+    <script>
+        const targetDate = new Date ('2025-01-01T00:00:00')
+
+        function updateCountdown(){
+            const currentDate = new Date();
+
+            const timeDifference = targetDate-currentDate
+
+            const days = Math.floor(timeDifference/(1000*60*60*24))
+
+            const hours = Math.floor((timeDifference%(1000*60*60*24))/(1000*60*60))
+
+            const minutes = Math.floor((timeDifference%(1000*60*60))/(1000*60))
+
+            const seconds = Math.floor((timeDifference%(1000*60))/1000)
+
+            document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`
+            setTimeout(updateCountdown,1000)
+           
+        }
+        updateCountdown()
+    </script>
+     <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
